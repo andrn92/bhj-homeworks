@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  font-size: 16px;
 }
 
 .bg_color_black {
@@ -109,6 +110,7 @@ body {
 
 .book {
   font-family: Georgia;
+  /* font-size: 12px; */
 }
 
 .book__content {
