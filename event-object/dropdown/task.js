@@ -1,5 +1,5 @@
-let dropdownValue = document.querySelector('.dropdown__value')
-let dropdownList = document.querySelector('.dropdown__list')
+const dropdownValue = document.querySelector('.dropdown__value')
+const dropdownList = document.querySelector('.dropdown__list')
 dropdownValue.onclick = function(event) {
   if (dropdownValue.nextElementSibling == dropdownList) {
     dropdownList.classList.toggle('dropdown__list_active')
