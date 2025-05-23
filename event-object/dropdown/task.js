@@ -7,6 +7,8 @@ dropdownValue.onclick = function(event) {
 }
 dropdownList.onclick = function(event) {
   event.preventDefault()
-  dropdownValue.innerHTML = event.target.innerHTML
+  if (event.target.closest('a')) {
+    dropdownValue.innerHTML = event.target.innerHTML
+  }
   dropdownList.classList.remove('dropdown__list_active')
 }
