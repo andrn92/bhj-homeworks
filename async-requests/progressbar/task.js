@@ -22,7 +22,7 @@ form.onsubmit = function(event) {
   }
 
   xhr.onloadend = function() {
-    if (xhr.status == 200) {
+    if (xhr.status > 199 && xhr.status < 300) {
     console.log("Success")
     } else {
     console.log("Error " + this.status)
