@@ -7,18 +7,8 @@ form.onsubmit = function(event) {
   let url = 'https://students.netoservices.ru/nestjs-backend/upload'
 
   xhr.upload.onprogress = function(event) {
-    let i = 0.0
-    let delay = 800
-    let timerId = setTimeout(function run() {
-      if (i < 1.2) {
-        progress.setAttribute('value', i)
-      } else {
-        clearTimeout(timerId)
-      }
-      i += 0.2
-      timerId = setTimeout(run, delay)
-    }, 0)
-    
+    progress.setAttribute('max', event.total);
+    progress.value = event.loaded;
   }
 
   xhr.onloadend = function() {
