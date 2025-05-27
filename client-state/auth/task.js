@@ -2,12 +2,12 @@ const form = document.getElementById("signin__form")
 const button = document.getElementById('signin__btn')
 const welcome = document.getElementById('welcome')
 const userId = document.getElementById('user_id')
-button.setAttribute('type', 'submit')
 form.addEventListener("submit", function(event) {
   event.preventDefault()
   const login = form.elements.login.value
   const password = form.elements.password.value
-  fetch('https://students.netoservices.ru/nestjs-backend/auth', { 
+  let url = 'https://students.netoservices.ru/nestjs-backend/auth'
+  fetch(url, { 
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -18,7 +18,7 @@ form.addEventListener("submit", function(event) {
   .then(data => {
     if (data.success) {
       welcome.classList.add('welcome_active')
-      userId.textContent = data['user_id']
+      userId.textContent = data.user_id
       localStorage.setItem('user', JSON.stringify(data.user))
     } else {
       alert("Login or password is incorrect")
