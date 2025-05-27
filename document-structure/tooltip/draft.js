@@ -1,7 +1,6 @@
 const elements = document.querySelectorAll('.has-tooltip')
 let div = document.createElement('div')
 div.className = 'tooltip'
-document.body.append(div)
 const script = document.querySelector('script')
 const mainArr = []
 const main = document.createElement('div')
@@ -14,18 +13,16 @@ for (let el of mainArr) {
 }
 script.before(main)
 script.before(div)
-const res = []
 main.addEventListener('click', function(event) {
-  res.append(event.target)
   if (event.target.closest('.has-tooltip')) {
-    event.target.preventDefault()
+    event.preventDefault()
     let coords = event.target.getBoundingClientRect()
+    let oldLeft = Number(div.style.left.slice(0,-2))
     div.classList.toggle('tooltip_active')
     div.style.cssText = `position: absolute; top: ${coords.bottom + window.pageYOffset}px; left: ${coords.left + window.pageXOffset}px;`
     div.innerHTML = event.target.title
+    if (oldLeft != Number(div.style.left.slice(0,-2))) {
+      div.classList.add('tooltip_active')
+    }
   }
-
 })
-console.log(res)
-// console.log(mainArr.length)
-// console.log(Array.from(main.children).length)
